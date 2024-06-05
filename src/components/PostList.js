@@ -3,21 +3,26 @@ import axios from 'axios';
 import { Container, List, ListItem, ListItemText, CircularProgress } from '@mui/material';
 import SearchBar from './SearchBar';
 
+/**
+ * PostList component that fetches posts from API and renders a list of posts with a search bar.
+ */
 const PostList = () => {
     const [posts, setPosts] = useState([]);
     const [filteredPosts, setFilteredPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // useEffect hook to fetch the posts from API when the component mounts.
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
+           .then(response => {
                 setPosts(response.data);
                 setFilteredPosts(response.data);
                 setLoading(false);
             })
-            .catch(error => console.error('Error fetching the posts:', error));
+           .catch(error => console.error('Error fetching the posts:', error));
     }, []);
 
+    // Handle search functionality to filter the posts based on the search query. @param {string} query The search query entered by the user
     const handleSearch = (query) => {
         const filtered = posts.filter(post =>
             post.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -26,6 +31,7 @@ const PostList = () => {
         setFilteredPosts(filtered);
     };
 
+    // Render a circular progress indicator while the posts are loading
     if (loading) {
         return <CircularProgress />;
     }
