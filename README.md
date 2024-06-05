@@ -14,17 +14,17 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
    ```sh
-    git clone <your-github-repo-url>
+    git clone https://github.com/Abhishekbtech/Simple-React-Application-with-API-Integration-and-Material-UI.git
     cd material-ui
    ```
 2. Install dependencies:
     ```sh
-        npm install
+    npm install
     ```
 
 3. Start the development server
     ```sh
-        npm start
+    npm start
     ```
 
 4. Open your browser and navigate to http://localhost:3000.
